@@ -101,27 +101,17 @@
                 font-size: 1.5rem;
             }
         }
-
-        @media (max-width: 480px) {
-            header {
-                padding: 60px 10px;
-            }
-
-            .portfolio h2 {
-                font-size: 1.2rem;
-            }
-
-            .card {
-                padding: 10px;
-            }
-
-            .card i {
-                font-size: 1.2rem;
-            }
-        }
     </style>
 </head>
 <body>
+<section>
+<div>
+    <div>
+        <p> </p>
+
+    </div>
+</div>
+</section>
 
     <header>
         <div class="container">
@@ -152,6 +142,7 @@
     </footer>
 
     <div style="position: fixed; bottom: 20px; left: 20px;">
+        <button onclick="startNarration()">🔊 Reproducir</button>
         <button onclick="togglePause()">⏸ Pausar / Reanudar</button>
     </div>
   
@@ -159,38 +150,17 @@
         const synth = window.speechSynthesis;
         let utterance;
         let isPaused = false;
-  
-        function getTextContent() {
-            const tags = document.body.querySelectorAll('h1, h2, h3, p');
-            return Array.from(tags).map(el => el.innerText).join('. ');
-        }
-  
-        function startNarration() {
-            if (synth.speaking) {
-                synth.cancel(); // Detener si ya está hablando
-            }
-            const text = getTextContent();
-            utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = 'es-ES'; // Puedes cambiar a 'en-US' o 'es-MX'
-            synth.speak(utterance);
-        }
-  
         function togglePause() {
-            if (synth.speaking) {
-                if (synth.paused) {
-                    synth.resume();
-                } else {
-                    synth.pause();
-                }
-            }
+      if (synth.speaking) {
+        if (synth.paused) {
+          synth.resume();
+        } else {
+          synth.pause();
         }
-    </script>
-         
-          </style>
-      
-      
-        <a href="index.html" style="color:#00bcd4;">← Volver al portafolio</a>
-      </body>
-      </html>
+      }
+    }
+  </script>
+  
+
 </body>
 </html>
